@@ -80,16 +80,40 @@
 
       <div class="input-group takePhoto">
         <input
-          id="takePhoto"
+          #uploadPhoto
           class="form-control-file"
           type="file"
           accept="image/*"
           capture="environment"
+          (change)="onFileChanged($event)"
         />
+        <button
+          (click)="uploadPhoto.click()"
+          type="button"
+          class="btn btn-lg btn-block"
+        >
+          Upload Photo
+        </button>
+      </div>
+      <div class="input-group takePhoto">
+        <ngx-qrcode
+          *ngIf="display"
+          id="qrCodeImage"
+          [qrc-element-type]="elementType"
+          [qrc-value]="value"
+        >
+        </ngx-qrcode>
+        <a [href]="href" *ngIf="display" (click)="downloadImage()" download
+          >Download Image</a
+        >
       </div>
       <div class="input-group">
-        <button type="button" class="btn btn-lg btn-block">
-          Block level button
+        <button
+          type="button"
+          class="btn btn-lg btn-block"
+          (click)="generateQRCode()"
+        >
+          Generate QR Code
         </button>
       </div>
     </div>
