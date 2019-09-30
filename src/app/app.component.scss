@@ -1,0 +1,45 @@
+$primary: #d9d9d9;
+$secondary: #a6998a;
+$alt: #a67f38;
+$pop: #8c6535;
+$dark: #403222;
+
+nav {
+  background-image: linear-gradient(to left bottom, $pop, $alt);
+}
+
+.takePhoto {
+  input {
+    display: inline-block;
+    padding: 120px 0 0 0;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: url("https://cdn1.iconfinder.com/data/icons/hawcons/32/698394-icon-130-cloud-upload-512.png")
+      center center no-repeat;
+    border-radius: 20px;
+    background-size: 60px 60px;
+  }
+}
+
+.content {
+  background-image: linear-gradient(to left bottom, $primary, $secondary);
+  .row {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    input {
+      box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+      background-color: $secondary;
+    }
+    .btn, span {
+        background-color: $pop;
+        color: $dark;
+    }
+  }
+  height: 100vmax;
+}
