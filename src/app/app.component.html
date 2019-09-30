@@ -37,6 +37,8 @@
           class="form-control"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-lg"
+          (change)="onHandleChange($event)"
+          name="name"
         />
       </div>
 
@@ -49,6 +51,8 @@
           class="form-control"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-lg"
+          (change)="onHandleChange($event)"
+          name="age"
         />
       </div>
 
@@ -63,6 +67,8 @@
           class="form-control"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-lg"
+          (change)="onHandleChange($event)"
+          name="location"
         />
       </div>
 
@@ -75,6 +81,8 @@
           class="form-control"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-lg"
+          (change)="onHandleChange($event)"
+          name="type"
         />
       </div>
 
@@ -85,7 +93,7 @@
           type="file"
           accept="image/*"
           capture="environment"
-          (change)="onFileChanged($event)"
+          (change)="onFileSelect($event)"
         />
         <button
           (click)="uploadPhoto.click()"
@@ -93,6 +101,9 @@
           class="btn btn-lg btn-block"
         >
           Upload Photo
+        </button>
+        <button (click)="onSubmit()" type="button" class="btn btn-lg btn-block">
+          Submit
         </button>
       </div>
       <div class="input-group takePhoto">
@@ -103,16 +114,9 @@
           [qrc-value]="value"
         >
         </ngx-qrcode>
-        <a [href]="href" *ngIf="display" (click)="downloadImage()" download
-          >Download Image</a
-        >
       </div>
       <div class="input-group">
-        <button
-          type="button"
-          class="btn btn-lg btn-block"
-          (click)="generateQRCode()"
-        >
+        <button type="button" class="btn btn-lg btn-block">
           Generate QR Code
         </button>
       </div>
