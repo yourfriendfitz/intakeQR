@@ -1,48 +1,66 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, FormControl } from "@angular/forms";
+import { IntakeService } from "./intake.service";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = "intakeQR";
   qrcodedata: string;
   elementType: "url" | "canvas" | "img" = "url";
   value: any;
   display = false;
   href: string;
-  SERVER_URL = "https://lacy-ringer.glitch.me/intake";
-  uploadForm: FormGroup;
+  form: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
-    private httpClient: HttpClient
+    private intakeService: IntakeService
   ) {}
 
   ngOnInit() {
-    this.uploadForm = this.formBuilder.group({
-      name: [""],
-      age: [""],
-      location: [""],
-      type: [""],
-      img: [""]
+    this.form = new FormGroup({
+      name: new FormControl(""),
+      age: new FormControl(""),
+      location: new FormControl(""),
+      type: new FormControl(""),
+      imgUrl: new FormControl("")
     });
-    console.log(this.uploadForm.value);
+    console.log(this.form.value);
   }
 
-  onHandleChange = event => {
-    this.uploadForm.get(event.target.name).setValue(event.target.value);
-    console.log(this.uploadForm.value);
-  };
+  // onHandleChange = event => {
+  //   this.form.patchValue({
+  //     [event.target.name]: event.target.value
+  //   });
+  //   console.log(this.form.value);
+  // };
 
   onFileSelect(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.uploadForm.get("img").setValue(file);
+      this.form.patchValue({
+        file: file
+      });
     }
-    console.log(this.uploadForm.value);
+    console.log(this.form.value);
+  }
+
+  // to test img upload
+  onUpload(event) {
+    const setImgUrl = path => {
+      console.log(path);
+      this.form.patchValue({
+        imgUrl: path
+      });
+      console.log(this.form.value)
+    };
+    this.intakeService
+      .uploadImg(event)
+      .subscribe(data => setImgUrl(data.path), error => console.log(error));
   }
 
   generateQRCode(res) {
@@ -51,15 +69,9 @@ export class AppComponent {
     this.display = true;
   }
 
-  onSubmit() {
-    const formData = new FormData();
-    formData.append("name", this.uploadForm.get("name").value);
-    formData.append("age", this.uploadForm.get("age").value);
-    formData.append("location", this.uploadForm.get("location").value);
-    formData.append("type", this.uploadForm.get("type").value);
-    // formData.append("file", this.uploadForm.get("img").value);
-    this.httpClient
-      .post<any>(this.SERVER_URL, formData)
-      .subscribe(res => this.generateQRCode(res), err => console.log(err));
+  onSubmit(animal) {
+    console.log(animal);
+    console.log(this.form.value);
+    this.intakeService.add(this.form.value).subscribe(res => console.log(res));
   }
 }
