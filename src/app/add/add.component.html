@@ -1,0 +1,102 @@
+<div class="row">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit(form.value)"
+    enctype="multipart/form-data"
+  >
+    <div class="input-group input-group-lg">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-lg">Name</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-lg"
+        name="name"
+        formControlName="name"
+      />
+    </div>
+
+    <div class="input-group input-group-lg">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-lg">Age</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-lg"
+        name="age"
+        formControlName="age"
+      />
+    </div>
+
+    <div class="input-group input-group-lg">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-lg">Location</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-lg"
+        name="location"
+        formControlName="location"
+      />
+    </div>
+
+    <div class="input-group input-group-lg">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-lg">Type</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-lg"
+        name="type"
+        formControlName="type"
+      />
+    </div>
+
+    <div class="input-group takePhoto">
+      <input
+        #uploadPhoto
+        class="form-control-file"
+        type="file"
+        accept="image/*"
+        capture="environment"
+        (change)="onUpload($event)"
+      />
+      <button
+        (click)="uploadPhoto.click()"
+        type="button"
+        class="btn btn-lg btn-block"
+      >
+        Upload Photo
+      </button>
+      <button (click)="onSubmit()" type="button" class="btn btn-lg btn-block">
+        Submit
+      </button>
+    </div>
+  </form>
+  <div class="input-group takePhoto">
+    <ngx-qrcode
+      *ngIf="display"
+      id="qrCodeImage"
+      [qrc-element-type]="elementType"
+      [qrc-value]="value"
+    >
+    </ngx-qrcode>
+  </div>
+  <div class="input-group">
+    <button
+      (click)="generateQRCode()"
+      type="button"
+      class="btn btn-lg btn-block"
+    >
+      Generate QR Code
+    </button>
+  </div>
+</div>
