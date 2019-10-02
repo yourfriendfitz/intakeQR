@@ -4,9 +4,6 @@ $alt: #a67f38;
 $pop: #8c6535;
 $dark: #403222;
 
-nav {
-  background-image: linear-gradient(to left bottom, $pop, $alt);
-}
 
 .takePhoto {
   input {
@@ -16,20 +13,5 @@ nav {
 
 .content {
   background-image: linear-gradient(to left bottom, $primary, $secondary);
-  .row {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-    input {
-      box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
-      background-color: $secondary;
-    }
-    .btn,
-    span {
-      background-color: $pop;
-      color: $dark;
-    }
-  }
-  height: 100vmax;
+  height: calc(100vh - 56px);
 }
