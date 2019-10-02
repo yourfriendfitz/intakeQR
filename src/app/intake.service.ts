@@ -10,14 +10,15 @@ export class IntakeService {
   constructor(private http: HttpClient) {}
 
   SERVER_URL = "https://lacy-ringer.glitch.me/intake";
-
   get(id: string) {
-    return this.http.get<AnimalResponse>(`${this.SERVER_URL}/${id}`).pipe(
-      map((response: AnimalResponse) => {
-        return response.animal;
-      }),
-      catchError(this.handleError)
-    );
+    return this.http
+      .get<Animal>(`${this.SERVER_URL}/animal/${id}`)
+      .pipe(
+        map((response: Animal) => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
   }
 
   add(animal: Animal) {
@@ -28,7 +29,7 @@ export class IntakeService {
 
   delete(animal: Animal) {
     return this.http
-      .delete(`${this.SERVER_URL}/${animal.id}`)
+      .delete(`${this.SERVER_URL}/${animal._id}`)
       .pipe(catchError(this.handleError));
   }
 
@@ -52,14 +53,10 @@ export class IntakeService {
   }
 }
 
-interface AnimalResponse {
-  animal: Animal;
-}
-
 export interface Animal {
-  id: number;
+  _id: string;
   name: string;
-  age: number;
+  age: string;
   location: string;
   type: string;
   imgUrl: string;
