@@ -1,0 +1,18 @@
+<div class="row" *ngIf="loaded">
+  <div class="card">
+    <img class="card-img-top" src="{{ fullImgUrl }}" alt="Card image cap" />
+    <div class="card-body">
+      <h5 class="card-title">{{ animal.name }}</h5>
+      <p class="card-text">
+        <span>age: {{ animal.age }} years</span>
+      </p>
+      <p class="card-text">
+        <span>location: {{ animal.location }}</span>
+      </p>
+      <p class="card-text">
+        <span>breed: {{ animal.type }}</span>
+      </p>
+    </div>
+  </div>
+  <div *ngIf="!loaded" #loading>Loading...</div>
+</div>
