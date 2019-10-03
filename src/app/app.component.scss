@@ -1,8 +1,4 @@
-$primary: #d9d9d9;
-$secondary: #a6998a;
-$alt: #a67f38;
-$pop: #8c6535;
-$dark: #403222;
+@import "../styles.scss";
 
 
 .takePhoto {
@@ -12,6 +8,9 @@ $dark: #403222;
 }
 
 .content {
-  background-image: linear-gradient(to left bottom, $primary, $secondary);
+  background-image: url("../assets/catBackground.png");
+  background-position: 25% 3%;
+  background-repeat: no-repeat;
+  background-color: $pop;
   height: calc(100vh - 56px);
 }

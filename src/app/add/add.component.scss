@@ -1,13 +1,13 @@
-$primary: #d9d9d9;
-$secondary: #a6998a;
-$alt: #a67f38;
-$pop: #8c6535;
-$dark: #403222;
+@import "../../styles.scss";
 
 .takePhoto {
   input {
     display: none;
   }
+}
+
+#qrCodeImage {
+  margin: auto;
 }
 
 .row {
@@ -28,7 +28,7 @@ $dark: #403222;
   }
   .btn,
   span {
-    background-color: $pop;
+    background-color: $alt;
     color: $dark;
   }
 }
