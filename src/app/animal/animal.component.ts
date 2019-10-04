@@ -30,8 +30,12 @@ export class AnimalComponent implements OnInit {
     this.intakeService.get(id).subscribe(animal => {
       console.log(animal);
       this.animal = animal;
-      this.fullImgUrl = `${this.SERVER_URL}/${animal.imgUrl}`;
+      this.fullImgUrl = this.formatUrl(animal, this.SERVER_URL);
       this.loaded = true;
     });
+  }
+
+  private formatUrl(animal: Animal, url: string): string {
+    return `${url}/${animal.imgUrl}`;
   }
 }
