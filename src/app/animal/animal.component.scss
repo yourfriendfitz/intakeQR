@@ -5,8 +5,33 @@
   justify-content: center;
   align-items: center;
   height: calc(100vh - 56px);
+  .container {
+    background-color: rgba($primary, 0.85);
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    height: 80vh;
+    display: grid;
+    justify-content: center;
+    .details {
+      margin: auto;
+      width: 100%;
+      .popped {
+        background-color: rgba($primary, 0.85);
+        box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+      }
+    }
+    form {
+      margin: auto;
+      width: 100%;
+      input, select {
+        background-color: rgba($primary, 0.85);
+        box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+      }
+    }
+    img {
+      margin: auto;
+    }
+  }
   router-outlet {
     display: none;
   }
-  
 }
