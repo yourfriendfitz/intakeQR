@@ -50,15 +50,8 @@ export class AddComponent implements OnInit {
     this.display = true;
   }
 
-  handleResponse = (res: Animal) => {
-    console.log(res);
-    this.value = `${this.CLIENT_URL}/${res._id}`;
-  };
-
   onSubmit() {
     console.log(this.form.value);
-    this.intakeService
-      .add(this.form.value)
-      .subscribe((res: Animal) => this.handleResponse(res));
+    this.intakeService.add(this.form.value).subscribe((res: Animal) => res);
   }
 }

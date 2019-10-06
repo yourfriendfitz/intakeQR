@@ -10,15 +10,17 @@ export class IntakeService {
   constructor(private http: HttpClient) {}
 
   SERVER_URL = "https://lacy-ringer.glitch.me/intake";
+  STATIC_URL = "https://lacy-ringer.glitch.me"
   get(id: string) {
-    return this.http
-      .get<Animal>(`${this.SERVER_URL}/animal/${id}`)
-      .pipe(
-        map((response: Animal) => {
-          return response;
-        }),
-        catchError(this.handleError)
-      );
+    return this.http.get<Animal>(`${this.SERVER_URL}/animal/${id}`).pipe(
+      map((response: Animal) => {
+        return {
+          ...response,
+          imgUrl: this.formatUrl(response, this.STATIC_URL)
+        };
+      }),
+      catchError(this.handleError)
+    );
   }
 
   add(animal: Animal) {
@@ -45,6 +47,10 @@ export class IntakeService {
         .post(`${this.SERVER_URL}/upload`, formData)
         .pipe(catchError(this.handleError));
     }
+  }
+
+  private formatUrl(animal: Animal, url: string): string {
+    return `${url}/${animal.imgUrl}`;
   }
 
   private handleError(error: HttpErrorResponse) {
