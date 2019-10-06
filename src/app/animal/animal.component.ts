@@ -10,7 +10,6 @@ import { IntakeService, Animal } from "../intake.service";
 export class AnimalComponent implements OnInit {
   id: string;
   animal: Animal;
-  fullImgUrl: string;
   loaded = false;
   SERVER_URL = "https://lacy-ringer.glitch.me";
   constructor(
@@ -30,12 +29,7 @@ export class AnimalComponent implements OnInit {
     this.intakeService.get(id).subscribe(animal => {
       console.log(animal);
       this.animal = animal;
-      this.fullImgUrl = this.formatUrl(animal, this.SERVER_URL);
       this.loaded = true;
     });
-  }
-
-  private formatUrl(animal: Animal, url: string): string {
-    return `${url}/${animal.imgUrl}`;
   }
 }
