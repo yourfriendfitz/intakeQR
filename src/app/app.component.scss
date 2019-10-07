@@ -1,16 +1,17 @@
 @import "../styles.scss";
 
-
-.takePhoto {
-  input {
-    display: none;
+@media screen {
+  .takePhoto {
+    input {
+      display: none;
+    }
   }
-}
 
-.content {
-  background-image: url("../assets/catBackground.png");
-  background-position: 25% 3%;
-  background-repeat: no-repeat;
-  background-color: $pop;
-  height: calc(100vh - 56px);
+  .content {
+    background-image: url("../assets/catBackground.png");
+    background-position: 25% 3%;
+    background-repeat: no-repeat;
+    background-color: $pop;
+    height: calc(100vh - 56px);
+  }
 }

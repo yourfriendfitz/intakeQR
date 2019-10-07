@@ -5,3 +5,49 @@ $alt: #f2e4d8;
 $pop: #65ceff;
 $contrast: #f98d00;
 $dark: #0d0d0d;
+
+@media print {
+  .qrPrint {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    z-index: 998;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    .qrInfo {
+      display: block !important;
+      margin: auto;
+      height: auto;
+      width: auto;
+    }
+  }
+}
+
+@media print and (max-width: 480px) {
+  .qrPrint {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    z-index: 998;
+    background-color: white;
+    height: 200%;
+    width: 200%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    .qrInfo {
+      display: block !important;
+      margin: auto;
+      height: auto;
+      width: auto;
+    }
+  }
+}

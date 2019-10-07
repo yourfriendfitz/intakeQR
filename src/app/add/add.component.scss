@@ -1,64 +1,44 @@
 @import "../../styles.scss";
 
-.takePhoto {
-  input {
-    display: none;
-  }
-}
-
-#qrCodeImage {
-  margin: auto;
-}
-
-@media print {
-  .qrPrint {
-    justify-content: center;
-    align-items: center;
-    z-index: 998;
-    background-color: white;
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    .qrInfo {
-      display: block !important;
-      margin: auto;
-      height: auto;
-      width: auto;
-    }
-  }
-}
-
-.row {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  height: calc(100vh - 56px);
-  router-outlet {
-    display: none;
-  }
-  .qrPrint {
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    .qrInfo {
+@media screen {
+  .takePhoto {
+    input {
       display: none;
     }
   }
-  form {
+
+  #qrCodeImage {
+    margin: auto;
+  }
+
+  .row {
     display: grid;
-    row-gap: 16px;
-  }
-  input {
-    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
-    background-color: $secondary;
-  }
-  .btn,
-  span {
-    background-color: $alt;
-    color: $dark;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 56px);
+    router-outlet {
+      display: none;
+    }
+    .qrPrint {
+      display: flex;
+      justify-content: center;
+      margin: auto;
+      .qrInfo {
+        display: none;
+      }
+    }
+    form {
+      display: grid;
+      row-gap: 16px;
+    }
+    input {
+      box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+      background-color: $secondary;
+    }
+    .btn,
+    span {
+      background-color: $alt;
+      color: $dark;
+    }
   }
 }

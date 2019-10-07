@@ -1,8 +1,10 @@
 @import "../../styles.scss";
 
-nav {
-  background-image: linear-gradient(to left bottom, $primary, $alt);
-  img {
-    height: 2em;
+@media screen {
+  nav {
+    background-image: linear-gradient(to left bottom, $primary, $alt);
+    img {
+      height: 2em;
+    }
   }
 }
