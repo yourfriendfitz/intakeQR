@@ -10,6 +10,28 @@
   margin: auto;
 }
 
+@media print {
+  .qrPrint {
+    justify-content: center;
+    align-items: center;
+    z-index: 998;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    .qrInfo {
+      display: block !important;
+      margin: auto;
+      height: auto;
+      width: auto;
+    }
+  }
+}
+
 .row {
   display: grid;
   justify-content: center;
@@ -17,6 +39,14 @@
   height: calc(100vh - 56px);
   router-outlet {
     display: none;
+  }
+  .qrPrint {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    .qrInfo {
+      display: none;
+    }
   }
   form {
     display: grid;

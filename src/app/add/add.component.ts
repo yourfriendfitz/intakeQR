@@ -12,7 +12,8 @@ export class AddComponent implements OnInit {
   title = "intakeQR";
   qrcodedata: string;
   elementType: "url" | "canvas" | "img" = "url";
-  value: any;
+  value: string;
+  animalName: string;
   display = false;
   href: string;
   form: FormGroup;
@@ -31,6 +32,7 @@ export class AddComponent implements OnInit {
     });
     console.log(this.form.value);
   }
+
   setImgUrl = path => {
     console.log(path);
     this.form.patchValue({
@@ -50,8 +52,22 @@ export class AddComponent implements OnInit {
     this.display = true;
   }
 
+  handleResponse = (res: Animal) => {
+    console.log(res);
+    this.value = `${this.CLIENT_URL}/${res._id}`;
+    this.animalName = res.name;
+  };
+
+  printQR = () => {
+    const qrInfo = document.querySelector(".qrInfo");
+    qrInfo.classList.remove("d-none");
+    window.print();
+    qrInfo.classList.add("d-none");
+  };
+
   onSubmit() {
-    console.log(this.form.value);
-    this.intakeService.add(this.form.value).subscribe((res: Animal) => res);
+    this.intakeService
+      .add(this.form.value)
+      .subscribe((res: Animal) => this.handleResponse(res));
   }
 }
