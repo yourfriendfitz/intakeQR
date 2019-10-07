@@ -15,6 +15,8 @@ export class AddComponent implements OnInit {
   value: string;
   animalName: string;
   display = false;
+  uploaded = false;
+  submitted = false;
   href: string;
   form: FormGroup;
   constructor(
@@ -38,6 +40,7 @@ export class AddComponent implements OnInit {
     this.form.patchValue({
       imgUrl: path
     });
+    this.uploaded = true;
     console.log(this.form.value);
   };
 
@@ -49,6 +52,8 @@ export class AddComponent implements OnInit {
   }
 
   generateQRCode() {
+    this.submitted = false;
+    this.uploaded = false;
     this.display = true;
   }
 
@@ -56,6 +61,7 @@ export class AddComponent implements OnInit {
     console.log(res);
     this.value = `${this.CLIENT_URL}/${res._id}`;
     this.animalName = res.name;
+    this.submitted = true;
   };
 
   printQR = () => {

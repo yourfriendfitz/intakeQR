@@ -80,6 +80,8 @@
         Submit
       </button>
     </div>
+    <div class="alert alert-success" role="alert" *ngIf="uploaded">Upload Successful</div>
+    <div class="alert alert-success" role="alert" *ngIf="submitted">Submit Successful</div>
   </form>
   <div class="input-group takePhoto qrPrint">
     <ngx-qrcode
