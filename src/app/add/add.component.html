@@ -81,7 +81,7 @@
       </button>
     </div>
   </form>
-  <div class="input-group takePhoto">
+  <div class="input-group takePhoto qrPrint">
     <ngx-qrcode
       *ngIf="display"
       id="qrCodeImage"
@@ -89,6 +89,13 @@
       [qrc-value]="value"
     >
     </ngx-qrcode>
+    <div class="qrInfo d-none">
+      <h3>{{ animalName }}</h3>
+      <p>
+        Hello, I'm available for adoption. Scan my QR code to find out all about
+        me!
+      </p>
+    </div>
   </div>
   <div class="input-group">
     <button
@@ -97,6 +104,9 @@
       class="btn btn-lg btn-block"
     >
       Generate QR Code
+    </button>
+    <button (click)="printQR()" type="button" class="btn btn-lg btn-block">
+      Print QR Card
     </button>
   </div>
 </div>
