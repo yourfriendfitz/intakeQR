@@ -7,6 +7,24 @@ $contrast: #f98d00;
 $dark: #0d0d0d;
 
 @media print {
+  .input-group {
+    button {
+      display: none;
+    }
+  }
+  .longPrint {
+    width: auto;
+    height: auto;
+    overflow: visible;
+    ul,
+    li {
+      display: block;
+      width: 100%;
+      page-break-before: auto;
+      page-break-after: auto;
+      page-break-inside: avoid;
+    }
+  }
   .qrPrint {
     display: flex !important;
     justify-content: center;
@@ -30,6 +48,17 @@ $dark: #0d0d0d;
 }
 
 @media print and (max-width: 480px) {
+  .longPrint {
+    width: auto;
+    height: auto;
+    overflow: visible;
+    .break {
+      display: block;
+      page-break-before: auto;
+      page-break-after: auto;
+      page-break-inside: avoid;
+    }
+  }
   .qrPrint {
     display: flex !important;
     justify-content: center;
