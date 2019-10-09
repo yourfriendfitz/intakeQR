@@ -6,11 +6,16 @@ $pop: #65ceff;
 $contrast: #f98d00;
 $dark: #0d0d0d;
 
+
+
 @media print {
   .input-group {
     button {
       display: none;
     }
+  }
+  .animalImg {
+    display: none;
   }
   .longPrint {
     width: auto;
