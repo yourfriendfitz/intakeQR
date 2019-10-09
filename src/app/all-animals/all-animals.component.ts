@@ -19,6 +19,9 @@ export class AllAnimalsComponent implements OnInit {
 
   getAnimals() {
     this.intakeService.getAll().subscribe(animals => {
+      if (animals.length === 0) {
+        animals = [this.intakeService.defaultAnimal()];
+      }
       console.log(animals);
       this.animals = animals;
       this.loaded = true;
