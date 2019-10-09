@@ -8,9 +8,9 @@ import { throwError } from "rxjs";
 })
 export class IntakeService {
   constructor(private http: HttpClient) {}
-
+  CLIENT_URL = "http://10.100.34.89:4200";
   SERVER_URL = "https://lacy-ringer.glitch.me/intake";
-  STATIC_URL = "https://lacy-ringer.glitch.me"
+  STATIC_URL = "https://lacy-ringer.glitch.me";
   get(id: string) {
     return this.http.get<Animal>(`${this.SERVER_URL}/animal/${id}`).pipe(
       map((response: Animal) => {
@@ -21,6 +21,12 @@ export class IntakeService {
       }),
       catchError(this.handleError)
     );
+  }
+
+  getAll() {
+    return this.http
+      .get<Animal[]>(`${this.SERVER_URL}s`)
+      .pipe(catchError(this.handleError));
   }
 
   add(animal: Animal) {
