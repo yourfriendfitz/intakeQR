@@ -8,7 +8,7 @@ import { IntakeService, Animal } from "../intake.service";
   styleUrls: ["./add.component.scss"]
 })
 export class AddComponent implements OnInit {
-  CLIENT_URL = "http://10.100.34.89:4200";
+  CLIENT_URL = this.intakeService.CLIENT_URL;
   title = "intakeQR";
   qrcodedata: string;
   elementType: "url" | "canvas" | "img" = "url";
