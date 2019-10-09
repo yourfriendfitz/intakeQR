@@ -8,9 +8,9 @@ import { throwError } from "rxjs";
 })
 export class IntakeService {
   constructor(private http: HttpClient) {}
-  CLIENT_URL = "http://10.100.34.89:4200";
+  CLIENT_URL = "http://10.100.34.89:4200/";
   SERVER_URL = "https://lacy-ringer.glitch.me/intake";
-  STATIC_URL = "https://lacy-ringer.glitch.me";
+  STATIC_URL = "https://lacy-ringer.glitch.me/";
   get(id: string) {
     return this.http.get<Animal>(`${this.SERVER_URL}/animal/${id}`).pipe(
       map((response: Animal) => {
@@ -56,13 +56,25 @@ export class IntakeService {
   }
 
   private formatUrl(animal: Animal, url: string): string {
-    return `${url}/${animal.imgUrl}`;
+    return url + animal.imgUrl;
   }
 
   private handleError(error: HttpErrorResponse) {
     console.error(error.message);
     return throwError("A data error occurred, please try again.");
   }
+
+  defaultAnimal = () => {
+    return {
+      _id: "0",
+      name: "Spot (Default Animal)",
+      age: "1",
+      location: "Houston",
+      type: "Dog",
+      imgUrl:
+        "https://www.statnews.com/wp-content/uploads/2019/08/AdobeStock_182445295-645x645.jpeg"
+    };
+  };
 }
 
 export interface Animal {
