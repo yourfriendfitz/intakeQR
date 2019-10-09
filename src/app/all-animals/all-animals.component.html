@@ -6,18 +6,21 @@
         type="button"
         class="btn btn-lg btn-block btn-primary"
       >
-        Print QR Card
+        Print QR Cards
       </button>
     </div>
     <div class="takePhoto longPrint m-3">
       <ul class="list-group">
         <li *ngFor="let animal of animals" class="list-group-item">
-          <ngx-qrcode
-            id="qrCodeImage"
-            [qrc-element-type]="elementType"
-            [qrc-value]="CLIENT_URL + animal._id"
-          >
-          </ngx-qrcode>
+          <div class="qrAndImg">
+            <ngx-qrcode
+              id="qrCodeImage"
+              [qrc-element-type]="elementType"
+              [qrc-value]="CLIENT_URL + animal._id"
+            >
+            </ngx-qrcode>
+            <img class="animalImg" src="{{ animal.imgUrl }}" alt="animal image" />
+          </div>
           <div class="qrInfo">
             <h3>{{ animal.name }}</h3>
             <p>
