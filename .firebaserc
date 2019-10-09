@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fitz-angular": {
+      "hosting": {
+        "intakeQR": [
+          "fitz-angular"
+        ]
+      }
+    }
+  }
+}
