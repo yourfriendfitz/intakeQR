@@ -8,9 +8,10 @@ import { AppComponent } from "./app.component";
 import { NavComponent } from './nav/nav.component';
 import { AnimalComponent } from './animal/animal.component';
 import { AddComponent } from './add/add.component';
+import { AllAnimalsComponent } from './all-animals/all-animals.component';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, AnimalComponent, AddComponent],
+  declarations: [AppComponent, NavComponent, AnimalComponent, AddComponent, AllAnimalsComponent],
   imports: [BrowserModule, ReactiveFormsModule, FormsModule, HttpClientModule, NgxQRCodeModule, routing],
   providers: [],
   bootstrap: [AppComponent]
