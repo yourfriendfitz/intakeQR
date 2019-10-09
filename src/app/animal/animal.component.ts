@@ -25,6 +25,11 @@ export class AnimalComponent implements OnInit {
   }
 
   getAnimal(id: string) {
+    if (id === "0") {
+      this.animal = this.intakeService.defaultAnimal();
+      this.loaded = true;
+      return;
+    }
     this.id = id;
     this.intakeService.get(id).subscribe(animal => {
       console.log(animal);
