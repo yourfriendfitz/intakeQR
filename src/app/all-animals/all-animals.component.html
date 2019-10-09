@@ -1,21 +1,35 @@
 <div class="row">
-  <div class="input-group takePhoto qrPrint">
-    <ul class="list-group">
-      <li *ngFor="let animal of animals" class="list-group-item">
-        <ngx-qrcode
-          id="qrCodeImage"
-          [qrc-element-type]="elementType"
-          [qrc-value]="CLIENT_URL + animal._id"
-        >
-        </ngx-qrcode>
-        <div class="qrInfo">
-          <h3>{{ animal.name }}</h3>
-          <p>
-            Hello, I'm available for adoption. Scan my QR code to find out all
-            about me!
-          </p>
-        </div>
-      </li>
-    </ul>
+  <div *ngIf="loaded" class="container p-5 overflow-auto rounded">
+    <div class="input-group">
+      <button
+        (click)="printQR()"
+        type="button"
+        class="btn btn-lg btn-block btn-primary"
+      >
+        Print QR Card
+      </button>
+    </div>
+    <div class="takePhoto longPrint m-3">
+      <ul class="list-group">
+        <li *ngFor="let animal of animals" class="list-group-item">
+          <ngx-qrcode
+            id="qrCodeImage"
+            [qrc-element-type]="elementType"
+            [qrc-value]="CLIENT_URL + animal._id"
+          >
+          </ngx-qrcode>
+          <div class="qrInfo">
+            <h3>{{ animal.name }}</h3>
+            <p>
+              Hello, I'm available for adoption. Scan my QR code to find out all
+              about me!
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="loading" *ngIf="!loaded">
+    <h1>...Loading</h1>
   </div>
 </div>
