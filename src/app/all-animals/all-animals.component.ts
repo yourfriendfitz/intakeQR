@@ -24,4 +24,7 @@ export class AllAnimalsComponent implements OnInit {
       this.loaded = true;
     });
   }
+  printQR = () => {
+    window.print();
+  };
 }
