@@ -15,7 +15,9 @@ export class AddComponent implements OnInit {
   value: string;
   animalName: string;
   display = false;
+  uploading = false;
   uploaded = false;
+  submitting = false;
   submitted = false;
   href: string;
   form: FormGroup;
@@ -40,18 +42,24 @@ export class AddComponent implements OnInit {
     this.form.patchValue({
       imgUrl: path
     });
+    this.uploading = false;
     this.uploaded = true;
     console.log(this.form.value);
   };
 
   // to test img upload
   onUpload(event) {
+    const qrDiv = document.querySelector(".qrPrint");
+    qrDiv.classList.add("d-none");
+    this.uploading = true;
     this.intakeService
       .uploadImg(event)
       .subscribe(path => this.setImgUrl(path), error => console.log(error));
   }
 
   generateQRCode() {
+    const qrDiv = document.querySelector(".qrPrint");
+    qrDiv.classList.remove("d-none");
     this.submitted = false;
     this.uploaded = false;
     this.display = true;
@@ -61,6 +69,7 @@ export class AddComponent implements OnInit {
     console.log(res);
     this.value = `${this.CLIENT_URL}/${res._id}`;
     this.animalName = res.name;
+    this.submitting = false;
     this.submitted = true;
   };
 
@@ -72,6 +81,8 @@ export class AddComponent implements OnInit {
   };
 
   onSubmit() {
+    this.uploaded = false;
+    this.submitting = true;
     this.intakeService
       .add(this.form.value)
       .subscribe((res: Animal) => this.handleResponse(res));
