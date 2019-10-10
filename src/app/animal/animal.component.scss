@@ -28,6 +28,12 @@
         select {
           background-color: rgba($primary, 0.85);
           box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+          color: $dark;
+        }
+        .btn,
+        span {
+          background-color: $alt;
+          color: $dark;
         }
       }
       img {
