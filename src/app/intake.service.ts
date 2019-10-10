@@ -24,9 +24,17 @@ export class IntakeService {
   }
 
   getAll() {
-    return this.http
-      .get<Animal[]>(`${this.SERVER_URL}s`)
-      .pipe(catchError(this.handleError));
+    return this.http.get<Animal[]>(`${this.SERVER_URL}s`).pipe(
+      map((response: Animal[]) => {
+        return response.map((animal: Animal) => {
+          return {
+            ...animal,
+            imgUrl: this.formatUrl(animal, this.STATIC_URL)
+          };
+        });
+      }),
+      catchError(this.handleError)
+    );
   }
 
   add(animal: Animal) {
