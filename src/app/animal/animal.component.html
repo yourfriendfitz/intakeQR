@@ -1,6 +1,10 @@
 <div class="row" *ngIf="loaded">
   <div class="container p-5 overflow-auto rounded">
-    <img src="{{ animal.imgUrl }}" class="rounded" />
+    <img
+      src="{{ animal.imgUrl }}"
+      class="rounded"
+      id="{{ animal._id }}"
+    />
     <h1 class="display-3">{{ animal.name }}</h1>
     <p class="lead">
       We love taking care of all animals, but {{ animal.name }} needs a forever
@@ -51,8 +55,8 @@
       </div>
     </form>
     <div class="alert alert-success m-5" role="alert" *ngIf="submitted">
-      Thanks for your interest in helping {{ animal.name }}, we will reach out to you
-      soon!
+      Thanks for your interest in helping {{ animal.name }}, we will reach out
+      to you soon!
     </div>
   </div>
 </div>
