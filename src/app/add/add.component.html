@@ -1,8 +1,5 @@
 <div class="row">
-  <form
-    [formGroup]="form"
-    enctype="multipart/form-data"
-  >
+  <form [formGroup]="form" enctype="multipart/form-data">
     <div class="input-group input-group-lg">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroup-sizing-lg">Name</span>
@@ -79,9 +76,19 @@
         Submit
       </button>
     </div>
-    <div class="alert alert-success" role="alert" *ngIf="uploaded">Upload Successful</div>
-    <div class="alert alert-success" role="alert" *ngIf="submitted">Submit Successful</div>
   </form>
+  <div class="alert alert-primary" role="alert" *ngIf="uploading">
+    Uploading...
+  </div>
+  <div class="alert alert-success" role="alert" *ngIf="uploaded">
+    Upload Successful
+  </div>
+  <div class="alert alert-primary" role="alert" *ngIf="submitting">
+    Submitting...
+  </div>
+  <div class="alert alert-success" role="alert" *ngIf="submitted">
+    Submit Successful
+  </div>
   <div class="input-group takePhoto qrPrint">
     <ngx-qrcode
       *ngIf="display"
