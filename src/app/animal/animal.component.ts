@@ -12,6 +12,7 @@ export class AnimalComponent implements OnInit {
   animal: Animal;
   loaded = false;
   SERVER_URL = "https://lacy-ringer.glitch.me";
+  submitted = false;
   constructor(
     private intakeService: IntakeService,
     private activatedRoute: ActivatedRoute
@@ -37,4 +38,10 @@ export class AnimalComponent implements OnInit {
       this.loaded = true;
     });
   }
+
+  onSubmit = () => {
+    const form = document.querySelector(".contact-form");
+    form.classList.add("d-none");
+    this.submitted = true;
+  };
 }
