@@ -19,7 +19,12 @@
               [qrc-value]="CLIENT_URL + animal._id"
             >
             </ngx-qrcode>
-            <img class="animalImg" src="{{ animal.imgUrl }}" alt="animal image" />
+            <img
+              id="{{ animal._id }}"
+              class="animalImg"
+              src="{{ animal.imgUrl }}"
+              alt="animal image"
+            />
           </div>
           <div class="qrInfo">
             <h3>{{ animal.name }}</h3>
@@ -33,6 +38,8 @@
     </div>
   </div>
   <div class="loading" *ngIf="!loaded">
-    <h1>...Loading</h1>
+    <div class="alert alert-primary" role="alert">
+      Loading...
+    </div>
   </div>
 </div>
