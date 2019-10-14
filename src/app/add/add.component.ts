@@ -21,10 +21,7 @@ export class AddComponent implements OnInit {
   submitted = false;
   href: string;
   form: FormGroup;
-  constructor(
-    private formBuilder: FormBuilder,
-    private intakeService: IntakeService
-  ) {}
+  constructor(private intakeService: IntakeService) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -34,17 +31,14 @@ export class AddComponent implements OnInit {
       type: new FormControl(""),
       imgUrl: new FormControl("")
     });
-    console.log(this.form.value);
   }
 
   setImgUrl = path => {
-    console.log(path);
     this.form.patchValue({
       imgUrl: path
     });
     this.uploading = false;
     this.uploaded = true;
-    console.log(this.form.value);
   };
 
   // to test img upload
@@ -66,7 +60,6 @@ export class AddComponent implements OnInit {
   }
 
   handleResponse = (res: Animal) => {
-    console.log(res);
     this.value = `${this.CLIENT_URL}/${res._id}`;
     this.animalName = res.name;
     this.submitting = false;
@@ -86,5 +79,6 @@ export class AddComponent implements OnInit {
     this.intakeService
       .add(this.form.value)
       .subscribe((res: Animal) => this.handleResponse(res));
+    this.ngOnInit();
   }
 }
