@@ -8,7 +8,7 @@ import { throwError } from "rxjs";
 })
 export class IntakeService {
   constructor(private http: HttpClient) {}
-  CLIENT_URL = "http://10.100.34.89:4200/";
+  CLIENT_URL = "https://fitz-angular.firebaseapp.com/";
   SERVER_URL = "https://lacy-ringer.glitch.me/intake";
   STATIC_URL = "https://lacy-ringer.glitch.me/";
   get(id: string) {
