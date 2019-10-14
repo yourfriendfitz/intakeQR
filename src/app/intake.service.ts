@@ -53,10 +53,8 @@ export class IntakeService {
     let fileList: FileList = event.target.files;
     if (fileList.length > 0) {
       let file: File = fileList[0];
-      console.log(file);
       let formData: FormData = new FormData();
       formData.append("file", file);
-      console.log(formData);
       return this.http
         .post(`${this.SERVER_URL}/upload`, formData)
         .pipe(catchError(this.handleError));

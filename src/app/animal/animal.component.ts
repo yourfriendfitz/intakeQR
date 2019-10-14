@@ -33,7 +33,6 @@ export class AnimalComponent implements OnInit {
     }
     this.id = id;
     this.intakeService.get(id).subscribe(animal => {
-      console.log(animal);
       this.animal = animal;
       this.loaded = true;
     });
