@@ -9,3 +9,5 @@ Mobile View Screenshot: ![Mobile Add Screen](mobileScreen.png)
 Animal Screenshot: ![Animal Screen](animalScreen.png)
 
 Mobile Animal Screenshot: ![Mobile Add Screen](mobileAnimalScreen.png)
+
+Please help improve this project by opening a pull request with a proposed change!
